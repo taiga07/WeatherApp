@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
     
     var weatherManager = WeatherManager()
     
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
         if textField.text != "" {
             return true
         } else {
-            textField.placeholder = "都市名を入力してください"
+            textField.placeholder = "入力してください"
             return false
         }
     }
@@ -59,6 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
             self.temperatureLabel.text = weather.tempString
+            self.cityNameLabel.text = weather.name
         }
     }
     
