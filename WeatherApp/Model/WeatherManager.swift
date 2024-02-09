@@ -84,7 +84,8 @@ struct WeatherManager {
             let decodedData = try decoder.decode(WeatherData.self, from: safeData)
             let cityName = decodedData.name
             let temp = decodedData.main.temp
-            let weather = WeatherModel(name: cityName, temp: temp)
+            let weatherID = decodedData.weather[0].id
+            let weather = WeatherModel(name: cityName, temp: temp, weatherID: weatherID)
             return weather
         } catch {
             delegate?.didFaillWithError(error: error)

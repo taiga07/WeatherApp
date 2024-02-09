@@ -77,6 +77,7 @@ extension ViewController: WeatherManagerDelegate {
         DispatchQueue.main.async {
             self.temperatureLabel.text = weather.tempString
             self.cityNameLabel.text = weather.name
+            self.weatherImage.image = UIImage(systemName: weather.weatherIcon)
         }
     }
     
