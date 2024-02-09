@@ -39,4 +39,25 @@ struct WeatherModel {
         }
     }
     
+    var weatherBackground: String {
+        switch weatherID {
+        case 200...232:
+            return "rain"
+        case 300...321:
+            return "fog"
+        case 500...531:
+            return "rain"
+        case 600...622:
+            return "snow"
+        case 701...781:
+            return "cloudy"
+        case 800:
+            return "DefaultBackground"
+        case 801...804:
+            return "cloudy"
+        default:
+            return "DefaultBackground"
+        }
+    }
+    
 }

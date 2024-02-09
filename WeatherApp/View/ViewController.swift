@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var weatherBackground: UIImageView!
     
     var weatherManager = WeatherManager()
     //位置情報を取得するためのクラス
@@ -78,6 +79,7 @@ extension ViewController: WeatherManagerDelegate {
             self.temperatureLabel.text = weather.tempString
             self.cityNameLabel.text = weather.name
             self.weatherImage.image = UIImage(systemName: weather.weatherIcon)
+            self.weatherBackground.image = UIImage(named: weather.weatherBackground)
         }
     }
     
