@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol WeatherManagerDelegate {
     //Viewでdataの値を使用できるように関数を宣言
@@ -30,6 +31,13 @@ struct WeatherManager {
     //ユーザーが入力した都市名を受け取りURLの作成
     func createURL(_ cityName: String){
         let urlString = "\(weatherURL)&q=\(cityName)&appid=\(apiKey)"
+        //作成したURLを渡してリクエストを投げる
+        performRequest(urlString)
+    }
+    
+    //位置情報から取得した、経度と緯度を使用してURLの作成
+    func createURL(_ lat: CLLocationDegrees, _ lon: CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(lat)&lon=\(lon)&appid=\(apiKey)"
         //作成したURLを渡してリクエストを投げる
         performRequest(urlString)
     }

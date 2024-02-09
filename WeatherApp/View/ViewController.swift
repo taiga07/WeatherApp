@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var weatherImage: UIImageView!
@@ -15,14 +16,25 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
     @IBOutlet weak var cityNameLabel: UILabel!
     
     var weatherManager = WeatherManager()
+    //位置情報を取得するためのクラス
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchTextField.delegate = self
         weatherManager.delegate = self
+        locationManager.delegate = self
+        
+        //アプリ立ち上げた際に、ユーザーに位置情報を提供するかどうかのポップアップを表示
+        locationManager.requestWhenInUseAuthorization()
+        //位置情報を一度だけ許可する場合は下記メソッド。アプリ使用中ずっと位置情報を取得する場合は、startUpdatingLocation()
+        locationManager.requestLocation()
     }
-    
+}
+
+//MARK: - UITextFieldDelegate
+extension ViewController: UITextFieldDelegate {
     //虫眼鏡押した時
     @IBAction func searchPressed(_ sender: UIButton) {
         //キーボードを閉じる
@@ -56,6 +68,10 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
         }
         textField.text = ""
     }
+}
+
+//MARK: - WeatherManagerDelegate
+extension ViewController: WeatherManagerDelegate {
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
@@ -67,11 +83,30 @@ class ViewController: UIViewController, UITextFieldDelegate, WeatherManagerDeleg
     func didFaillWithError(error: Error) {
         print(error)
     }
-    
-    
-    @IBAction func locationPressed(_ sender: UIButton) {
-    }
-    
-
 }
 
+//MARK: - CLLocationManagerDelegate
+extension ViewController: CLLocationManagerDelegate {
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        //位置情報は正確な場所を特定するために何度か更新されるから、最後の値をlastで取得する。
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            //経度
+            let lat = location.coordinate.latitude
+            //緯度
+            let lon = location.coordinate.longitude
+            weatherManager.createURL(lat, lon)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    
+}
