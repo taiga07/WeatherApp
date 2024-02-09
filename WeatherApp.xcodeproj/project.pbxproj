@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		036A28872B766DF80096AEE8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 036A28862B766DF80096AEE8 /* README.md */; };
+		036A288A2B7678950096AEE8 /* introduction.GIF in Resources */ = {isa = PBXBuildFile; fileRef = 036A28892B7678950096AEE8 /* introduction.GIF */; };
 		03B966692B725BEB009844D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B966682B725BEB009844D5 /* AppDelegate.swift */; };
 		03B9666B2B725BEB009844D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9666A2B725BEB009844D5 /* SceneDelegate.swift */; };
 		03B9666D2B725BEB009844D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B9666C2B725BEB009844D5 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		036A28862B766DF80096AEE8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		036A28892B7678950096AEE8 /* introduction.GIF */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = introduction.GIF; sourceTree = "<group>"; };
 		03B966652B725BEB009844D5 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03B966682B725BEB009844D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03B9666A2B725BEB009844D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		036A28882B7671650096AEE8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				036A28892B7678950096AEE8 /* introduction.GIF */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		03B9665C2B725BEB009844D5 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 		03B966672B725BEB009844D5 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				036A28882B7671650096AEE8 /* Images */,
 				0354509A2B76582D00A4DC3F /* Controller */,
 				03B9667D2B726B98009844D5 /* Model */,
 				03B966682B725BEB009844D5 /* AppDelegate.swift */,
@@ -164,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036A288A2B7678950096AEE8 /* introduction.GIF in Resources */,
 				03B966752B725BED009844D5 /* LaunchScreen.storyboard in Resources */,
 				03B966722B725BED009844D5 /* Assets.xcassets in Resources */,
 				036A28872B766DF80096AEE8 /* README.md in Resources */,
